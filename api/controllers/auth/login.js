@@ -40,6 +40,7 @@ module.exports = {
     if (!user) {throw 'invalidEmail';}
     const validPassword = await sails.config.globals.bcrypt.compare(password, user.password);
     if (!validPassword) {throw 'invalidPassword';}
+    this.req.session.userId = user.id;
     // All done.
     return;
   }
