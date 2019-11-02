@@ -33,6 +33,11 @@ module.exports = {
       isEmail: true
     },
 
+    rating: {
+      type: 'number',
+      defaultsTo: 1000
+    },
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
