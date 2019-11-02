@@ -1,5 +1,5 @@
 /**
- * User.js
+ * Game.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -12,25 +12,37 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    username: {
-      type: 'string',
-      minLength: 8,
-      maxLength: 40,
-      required: true,
-      unique: true
+    playerOneInitalRating: {
+      type: 'number',
+      required: true
     },
 
-    password: {
-      type: 'string',
-      required: true,
-      unique: true
+    playerTwoInitalRating: {
+      type: 'number',
+      required: true
     },
 
-    email: {
-      type: 'string',
-      required: true,
-      unique: true,
-      isEmail: true
+    playerOneExpectedScore: {
+      type: 'number',
+      required: true
+    },
+
+    playerTwoExpectedScore: {
+      type: 'number',
+      required: true
+    },
+
+    playerOneActualScore: {
+      type: 'number'
+    },
+
+    playerTwoActualScore: {
+      type: 'number'
+    },
+
+    // This despite being a config property is important to store in DB for record keeping and adjustment decisions
+    systemKValue: {
+      type: 'number'
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
@@ -41,9 +53,9 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    games: {
-      collection: 'Game',
-      via: 'players'
+    players: {
+      collection: 'User',
+      via: 'games'
     }
   },
 
