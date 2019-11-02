@@ -20,11 +20,20 @@ module.exports.bootstrap = async function() {
   //   return;
   // }
   //
-  // await User.createEach([
-  //   { emailAddress: 'ry@example.com', fullName: 'Ryan Dahl', },
-  //   { emailAddress: 'rachael@example.com', fullName: 'Rachael Shaw', },
-  //   // etc.
-  // ]);
-  // ```
+  await bootstrapUsers();
 
 };
+
+
+async function bootstrapUsers() {
+  if (await User.count() > 0) {
+    return;
+  }
+  const unusedUser1 = await User.create(
+    {username: 'testtest', password: await sails.config.globals.bcrypt.hash('testtest', 10), email: 'test@test.com'},
+  ).fetch();
+  const unusedUser2 = await User.create(
+    {username: 'testtest2', password: await sails.config.globals.bcrypt.hash('testtest2', 10), email: 'test2@test.com'},
+  ).fetch();
+  return;
+}
