@@ -22,20 +22,22 @@ module.exports = {
 
 
   exits: {
-    invalidUsername: {
+    invalidEmail: {
       statusCode: 422,
-      description: 'The username provided is not registered'
+      description: 'The email provided is not registered',
+      responseType: 'invalidEmail',
     },
     invalidPassword: {
       statusCode: 422,
-      description: 'Invalid password provided'
+      description: 'Invalid password provided',
+      responseType: 'invalidPassword'
     }
   },
 
 
   fn: async function ({email, password}) {
     const user = await User.findOne({email});
-    if (!user) {throw 'invalidUsername';}
+    if (!user) {throw 'invalidEmail';}
     const validPassword = await sails.config.globals.bcrypt.compare(password, user.password);
     if (!validPassword) {throw 'invalidPassword';}
     // All done.
