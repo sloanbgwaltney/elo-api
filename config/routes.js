@@ -9,5 +9,6 @@
  */
 
 module.exports.routes = {
-  'POST /api/v1/auth/login': { action: 'auth/login' }
+  'POST /api/v1/auth/login': { action: 'auth/login' },
+  'POST /api/v1/auth/register': { action: 'auth/register' }
 };
