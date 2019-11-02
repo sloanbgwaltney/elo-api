@@ -49,4 +49,11 @@ module.exports.globals = {
 
   sails: true,
 
+  /****************************************************************************
+  *                                                                           *
+  * bcryptjs used for password hashing and hash/plaintext comparisons         *
+  *                                                                           *
+  *                                                                           *
+  ****************************************************************************/
+  bcrypt: require('bcryptjs')
 };
